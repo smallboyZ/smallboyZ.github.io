@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PinTool-CPU侧信道 | Lu1u</title><meta name="author" content="Lu1u"><meta name="copyright" content="Lu1u"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="以2021SCTF的Low-RE为主，初探pintool技术，也对RE手段有了新的认识  IntelPin的安装 Pin 是 Intel 公司研发的一个动态二进制插桩框架，可以在二进制程序运行过程中插入各种函数，以监控程序每一步的执行。  条件准备1234567891、Visual Studio Community 2019 Edition2、Cygwin&#39;s 64-bit&#x2F;&#x2F;https:&#x2F;&#x2F;c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PinTool-CPU侧信道">
+<meta property="og:url" content="http://example.com/2021/12/31/PinTool-CPU%E4%BE%A7%E4%BF%A1%E9%81%93/index.html">
+<meta property="og:site_name" content="Lu1u">
+<meta property="og:description" content="以2021SCTF的Low-RE为主，初探pintool技术，也对RE手段有了新的认识  IntelPin的安装 Pin 是 Intel 公司研发的一个动态二进制插桩框架，可以在二进制程序运行过程中插入各种函数，以监控程序每一步的执行。  条件准备1234567891、Visual Studio Community 2019 Edition2、Cygwin&#39;s 64-bit&#x2F;&#x2F;https:&#x2F;&#x2F;c">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.shi1011.cn/2021/12/cbe91a9658490131c13ef122dafbf8d3.png">
+<meta property="article:published_time" content="2021-12-31T13:53:37.000Z">
+<meta property="article:modified_time" content="2021-12-31T15:13:58.357Z">
+<meta property="article:author" content="Lu1u">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.shi1011.cn/2021/12/cbe91a9658490131c13ef122dafbf8d3.png"><link rel="shortcut icon" href="/img/lu1u.png"><link rel="canonical" href="http://example.com/2021/12/31/PinTool-CPU%E4%BE%A7%E4%BF%A1%E9%81%93/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'PinTool-CPU侧信道',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-31 23:13:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lu1u.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.shi1011.cn/2021/12/cbe91a9658490131c13ef122dafbf8d3.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Lu1u</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">PinTool-CPU侧信道</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-12-31T13:53:37.000Z" title="Created 2021-12-31 21:53:37">2021-12-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-12-31T15:13:58.357Z" title="Updated 2021-12-31 23:13:58">2021-12-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/RE/">RE</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>8min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PinTool-CPU侧信道"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>以2021SCTF的Low-RE为主，初探pintool技术，也对RE手段有了新的认识</p>
+</blockquote>
+<h1 id="IntelPin的安装"><a href="#IntelPin的安装" class="headerlink" title="IntelPin的安装"></a>IntelPin的安装</h1><blockquote>
+<p>Pin 是 Intel 公司研发的一个动态二进制插桩框架，可以在二进制程序运行过程中插入各种函数，以监控程序每一步的执行。</p>
+</blockquote>
+<h2 id="条件准备"><a href="#条件准备" class="headerlink" title="条件准备"></a>条件准备</h2><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、Visual Studio Community <span class="number">2019</span> Edition</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、Cygwin<span class="number">'</span>s <span class="number">64</span>-bit</span><br><span class="line"><span class="comment">//https://cygwin.com/install.html</span></span><br><span class="line"><span class="comment">//需要再安装时选择make gcc-g++的包，非默认</span></span><br><span class="line">    </span><br><span class="line"><span class="number">3</span>、Intel Pin</span><br><span class="line"><span class="comment">//https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-binary-instrumentation-tool-downloads.html</span></span><br><span class="line"><span class="comment">//版本可以在3.18 - 3.20 或 3.11-3.13 有些对应版本的工具已经被编译为dll在git上</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="VS"><a href="#VS" class="headerlink" title="VS"></a>VS</h3><p>不过要记录VS的vcvars32/64.bat的存放路径，找到VS存放的位置，例如。</p>
+<blockquote>
+<p>“F:\visual studio2019\VC\Auxiliary\Build”<br>build文件夹下有这两个bat文件</p>
+</blockquote>
+<h3 id="Cygwin"><a href="#Cygwin" class="headerlink" title="Cygwin"></a>Cygwin</h3><p>Cygwin是能在windows环境下执行linux的指令，不过make，gcc，g++等指令要自己下载。</p>
+<p><img src="https://i.imgur.com/5fpdYVd.png"></p>
+<p>view 选择FULL 搜索要安装的gcc-g++ 和 make 即可，小箭头选着版本，skip即跳过。</p>
+<p><strong>下载完成后，将’D:\Cygwin\bin’添加到环境变量。</strong></p>
+<p><strong>cygwin安装新包</strong></p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、重新运行安装程序</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、类似apt-get</span><br><span class="line"></span><br><span class="line"> apt-cyg install yourPackage</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Intel-Pin"><a href="#Intel-Pin" class="headerlink" title="Intel Pin"></a>Intel Pin</h3><p><a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-binary-instrumentation-tool-downloads.html">Intel pin官网下载</a></p>
+<p><strong>版本可以选择3.18-3.20 / 3.10-3.13 有现成的工具</strong>。</p>
+<p>完成下载后，将pin.exe所在的目录添加到环境变量。</p>
+<blockquote>
+<p>例如: “D:\pindir\pin”</p>
+</blockquote>
+<p>完成以上操作后，需要对pin\source\tools\ManualExamples的文件进行编译</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">x64</span><br><span class="line"></span><br><span class="line">pushd D:\pindir\pin\source\tools\ManualExamples</span><br><span class="line"><span class="comment">//选择对应位的bat文件</span></span><br><span class="line"></span><br><span class="line"><span class="string">"F:\visual studio2019\VC\Auxiliary\Build\vcvars64.bat"</span></span><br><span class="line"></span><br><span class="line">make all 或 make TARGET=intel64 <span class="comment">//等待即可</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x86</span><br><span class="line"></span><br><span class="line">pushd D:\pindir\pin\source\tools\ManualExamples</span><br><span class="line"><span class="comment">//选择对应位的bat文件</span></span><br><span class="line"></span><br><span class="line"><span class="string">"F:\visual studio2019\VC\Auxiliary\Build\vcvars64.bat"</span></span><br><span class="line"></span><br><span class="line">make all 或 make TARGET=ia32 <span class="comment">//等待即可</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>编译成功后，会在ManualExamples目录下生成两个目录，里面的dll 文件即用到的pintools。</strong></p>
+<blockquote>
+<p>使用语法<br>pin -t inscount0.dll – test.exe</p>
+</blockquote>
+<p>单独把pintool的dll文件放到与目标PE文件同目录下，打开cmd输入指令即可。</p>
+<p><strong>完成上述操作后，Intel Pin的一些常用pindll即可自由使用。</strong></p>
+<p>有关pin的更多知识详见:<a target="_blank" rel="noopener" href="https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/5.2.1_pin.html#pin-%E5%9C%A8-ctf-%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8">https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/5.2.1_pin.html#pin-%E5%9C%A8-ctf-%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8</a></p>
+<h1 id="Pin在CTF中的使用"><a href="#Pin在CTF中的使用" class="headerlink" title="Pin在CTF中的使用"></a>Pin在CTF中的使用</h1><blockquote>
+<p>根据做题经验，往往加密后flag的check是逐个比对，也就是较接近明文的输入执行的指令数目越多，或用比较次数来反映，根据这一特性，有了pin的inscount的辅助，我们便能通过反馈的指令执行数目来爆破flag。</p>
+</blockquote>
+<h2 id="low-re"><a href="#low-re" class="headerlink" title="low_re"></a>low_re</h2><blockquote>
+<p>题目附件在文末。</p>
+</blockquote>
+<p><img src="https://res.cloudinary.com/lu1u/image/upload/v1640960133/blog_img/%E6%AF%94%E8%B5%9B%E5%A4%8D%E7%8E%B0/sctf-lowre_etmaja.png"></p>
+<p>VM保护壳，64位程序，脱起壳来就比较麻烦，不过x64dbg能直接定位入口点dump出，但脱壳后的程序拖入IDA的逻辑也看不出如何执行。</p>
+<p>strings窗口有线索，有些hash和flag的提示输入，也难猜出加密算法如何，起初尝试动调，虽然了解到是在调用py文件执行加密，并且找到了几个关键函数，但是还是发现不了加密过程。</p>
+<blockquote>
+<p>由此引入一种新的RE方式，静态和动态都无感，就尝试pintool来暴破一下。</p>
+</blockquote>
+<h3 id="爆破输入长度"><a href="#爆破输入长度" class="headerlink" title="爆破输入长度"></a>爆破输入长度</h3><p>为了让输出效果更直观一些，修改inscount0.cpp编译出mycount64.dll,(自带的是写入到文件)。</p>
+<blockquote>
+<p>inscount1(BB级插桩) 与 inscount0(ins级插桩) 效果相同，但 inscount1 速度更快，实际解题时可以用 inscount1 代替 inscount0</p>
+</blockquote>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">VOID <span class="title">Fini</span><span class="params">(INT32 code, VOID *v)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">// Write to a file since cout and cerr maybe closed by the application</span></span><br><span class="line">    OutFile.setf(ios::showbase);</span><br><span class="line">    OutFile &lt;&lt; <span class="string">"Count "</span> &lt;&lt; icount &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"Count "</span> &lt;&lt; icount &lt;&lt; <span class="built_in">endl</span>;<span class="comment">//this 结果输出</span></span><br><span class="line">    OutFile.close();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>根据hash的条数来看输入的位数不会太多，先用mycount爆破一下不同输入位数，因为程序一般都会检测一下输入的长度，如果长度正确反馈的指令数也会更多。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> Popen,PIPE</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line">pinInit = <span class="keyword">lambda</span> tool,pe: Popen([<span class="string">'pin'</span>,<span class="string">'-t'</span>,tool,<span class="string">'--'</span>,pe],stdin=PIPE,stdout=PIPE)</span><br><span class="line">pinWrite = <span class="keyword">lambda</span>  cont : pin.stdin.write(cont)</span><br><span class="line">pinRead = <span class="keyword">lambda</span> : pin.communicate()[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    last_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">30</span>):</span><br><span class="line">        pin = pinInit(<span class="string">"mycount64"</span>,<span class="string">"low_re.exe"</span>)</span><br><span class="line">        pinWrite(<span class="string">b"a"</span>*i+<span class="string">b'\n'</span>)  <span class="comment">#  换行前即输入内容</span></span><br><span class="line">        _count = <span class="built_in">int</span>(pinRead().split(<span class="string">b"Count "</span>)[<span class="number">1</span>])</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"inputlen({:2d}) -&gt; cout({}) -&gt; delta({})"</span>.<span class="built_in">format</span>(i,_count,_count-last_count))</span><br><span class="line">        last_count=_count</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p><img src="https://res.cloudinary.com/lu1u/image/upload/v1640960688/blog_img/%E6%AF%94%E8%B5%9B%E5%A4%8D%E7%8E%B0/lowre1_cqg80x.png"></p>
+<p>可见在输入长度为17时返回的指令数目明显多于其他长度，故flag大致长为17。</p>
+<h3 id="爆破输入内容"><a href="#爆破输入内容" class="headerlink" title="爆破输入内容"></a>爆破输入内容</h3><p>也是根据反馈指令数目最多来估计为正确字符。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> Popen,PIPE</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line">pinInit = <span class="keyword">lambda</span> tool,pe: Popen([<span class="string">'pin'</span>,<span class="string">'-t'</span>,tool,<span class="string">'--'</span>,pe],stdin=PIPE,stdout=PIPE)</span><br><span class="line">pinWrite = <span class="keyword">lambda</span>  cont : pin.stdin.write(cont)</span><br><span class="line">pinRead = <span class="keyword">lambda</span> : pin.communicate()[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    last_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> string.printable: <span class="comment">#从可打印字符中爆破</span></span><br><span class="line">        pin = pinInit(<span class="string">"mycount64"</span>,<span class="string">"low_re.exe"</span>)</span><br><span class="line">        pinWrite(i.encode()+<span class="string">b'*'</span>*<span class="number">16</span>+<span class="string">b'\n'</span>)  <span class="comment">#  换行前即输入内容</span></span><br><span class="line">        _count = <span class="built_in">int</span>(pinRead().split(<span class="string">b"Count "</span>)[<span class="number">1</span>])</span><br><span class="line">        <span class="comment">#print("inputlen({:2d}) -&gt; cout({}) -&gt; delta({})".format(i,_count,_count-last_count))</span></span><br><span class="line">        <span class="comment">#last_count=_count</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">'Count(%s) : %d'</span>%(i,_count))</span><br><span class="line"><span class="comment"># ***************** -&gt;624221257</span></span><br><span class="line"><span class="comment"># S**************** -&gt;659084533</span></span><br><span class="line"><span class="comment"># S1*************** -&gt;699517166</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>如下图，第一个字符为S时指令数目最多，按照如下思路爆破。</p>
+<p><img src="https://res.cloudinary.com/lu1u/image/upload/v1640960965/blog_img/%E6%AF%94%E8%B5%9B%E5%A4%8D%E7%8E%B0/lowre2_eygakr.png"></p>
+<p>单由主线程爆破会比较慢，初涉时跑了1个多小时，了解多线程后，用python实现多线程的爆破。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> Popen,PIPE</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> queue</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line">pinInit = <span class="keyword">lambda</span> tool,pe: Popen([<span class="string">'pin'</span>,<span class="string">'-t'</span>,tool,<span class="string">'--'</span>,pe],stdin=PIPE,stdout=PIPE)</span><br><span class="line">last_count=<span class="number">695980376</span> <span class="comment">#当前字符对应的指令数</span></span><br><span class="line">flag=<span class="string">'S1'</span> <span class="comment">#测试的字符</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pintool</span>(<span class="params">s</span>):</span></span><br><span class="line">    pin = pinInit(<span class="string">"mycount64"</span>, <span class="string">"low_re.exe"</span>)</span><br><span class="line">    pin.stdin.write(s.encode())</span><br><span class="line">    _count = <span class="built_in">int</span>(pin.communicate()[<span class="number">0</span>].split(<span class="string">b"Count "</span>)[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> _count</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">boom</span>():</span></span><br><span class="line">        <span class="keyword">global</span> flag,last_count,Tcount</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> q.empty():</span><br><span class="line">            nows=q.get()</span><br><span class="line">            s=(flag+nows).ljust(<span class="number">17</span>,<span class="string">'*'</span>)+<span class="string">'\n'</span> <span class="comment">#换行代表输入</span></span><br><span class="line">            cout=pintool(s)</span><br><span class="line">            <span class="keyword">if</span> cout - last_count &gt; <span class="number">30000000</span>:</span><br><span class="line">                flag += nows</span><br><span class="line">                last_count = cout</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">'now_str({}) -&gt; count({})'</span>.<span class="built_in">format</span>(flag, cout))</span><br><span class="line">                q.queue.clear()</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="comment">#    q.queue.clear() 清楚队列再赋值</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setque</span>(<span class="params">q</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> string.printable[:-<span class="number">2</span>]:<span class="comment">#</span></span><br><span class="line">        q.put(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    q = queue.Queue(<span class="number">100</span>)</span><br><span class="line">    setque(q)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(flag)!=<span class="number">17</span>:</span><br><span class="line">        <span class="keyword">if</span> q.empty():</span><br><span class="line">            setque(q)</span><br><span class="line">        <span class="keyword">while</span> threading.active_count()&lt;<span class="number">5</span>: <span class="comment">#维持活跃的多线程</span></span><br><span class="line">             t=threading.Thread(target=boom)</span><br><span class="line">             <span class="comment">#print(threading.active_count())</span></span><br><span class="line">             t.start()</span><br></pre></td></tr></tbody></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">now_str(S1) -&gt; count(<span class="number">695980376</span>)</span><br><span class="line">now_str(S1d) -&gt; count(<span class="number">735896918</span>)</span><br><span class="line">now_str(S1de) -&gt; count(<span class="number">773007592</span>)</span><br><span class="line">now_str(S1deC) -&gt; count(<span class="number">811103179</span>)</span><br><span class="line">now_str(S1deCh) -&gt; count(<span class="number">852675272</span>)</span><br><span class="line">now_str(S1deCh4) -&gt; count(<span class="number">885489938</span>)</span><br><span class="line">now_str(S1deCh4n) -&gt; count(<span class="number">927208181</span>)</span><br><span class="line">now_str(S1deCh4nn) -&gt; count(<span class="number">965470416</span>)</span><br><span class="line">now_str(S1deCh4nne) -&gt; count(<span class="number">1002501465</span>)</span><br><span class="line">now_str(S1deCh4nnel) -&gt; count(<span class="number">1035433103</span>)</span><br><span class="line">now_str(S1deCh4nnelA) -&gt; count(<span class="number">1074349914</span>)</span><br><span class="line">now_str(S1deCh4nnelAt) -&gt; count(<span class="number">1112107131</span>)</span><br><span class="line">now_str(S1deCh4nnelAtt) -&gt; count(<span class="number">1149152834</span>)</span><br><span class="line">now_str(S1deCh4nnelAtt@) -&gt; count(<span class="number">1192837040</span>)</span><br><span class="line">now_str(S1deCh4nnelAtt@c) -&gt; count(<span class="number">1231986313</span>)</span><br><span class="line"><span class="comment">//SCTF{S1deCh4nnelAtt@ck}</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">hello challanger</span></span><br><span class="line"><span class="comment">please input your flag:</span></span><br><span class="line"><span class="comment">S1deCh4nnelAtt@ck</span></span><br><span class="line"><span class="comment">you are right</span></span><br><span class="line"><span class="comment">Count 1227060385*/</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>在跑到最后一个字符时会有些反常，可以单独再爆破或者根据大意猜出为attack。</p>
+<blockquote>
+<p>反思:本题有着VM壳，或者如果遇到大量的混淆，在flag长度较短的情况下，pintool无疑是一大利器。</p>
+</blockquote>
+<p>有些程序判断flag正误会有congra或wrong!等提示，返回值在pin.communicate()元组中，也可以用于爆破。</p>
+<h2 id="check判断计数"><a href="#check判断计数" class="headerlink" title="check判断计数"></a>check判断计数</h2><blockquote>
+<p>有时正确或者错误的输入在执行指令数上没有较大差别，那么第一种方式就不太适用了，但是程序如果是对输入逐个check的话，并且我们IDA中已知判断代码的地址，我们也能通过改写pintool来计数。</p>
+</blockquote>
+<p>例如:</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length(provided_flag); i++)</span><br><span class="line">{</span><br><span class="line">	<span class="keyword">if</span> (main_mapanic(provided_flag[i]) != constant_binary_blob[i])</span><br><span class="line">	{</span><br><span class="line">		bad_boy();</span><br><span class="line">		<span class="built_in">exit</span>();</span><br><span class="line">	}</span><br><span class="line">	goodboy();</span><br><span class="line">}</span><br><span class="line"><span class="comment">//节选自前辈博客</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>可见是逐个对flag进行比较的，即cmp处，我们可以以此为参考，每当程序执行到cmp一次计数加一，因为如果比对错误程序就会退出，由此可以由count的大小来判断输入的正确性。</p>
+<p>同样，对inscount0进行修改并编译成新的pintool。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">更改前：</span><br><span class="line"><span class="function">VOID <span class="title">docount</span><span class="params">()</span> </span>{ icount++; }</span><br><span class="line">更改后：</span><br><span class="line"><span class="function">VOID <span class="title">docount</span><span class="params">(<span class="keyword">void</span> *ip)</span> </span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  	<span class="comment">// .text:000000000047B96E  cmp al, cl; #代码比较处</span></span><br><span class="line">	<span class="keyword">if</span> ((<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span>)ip == <span class="number">0x000000000047B96E</span>)</span><br><span class="line">	 icount++; </span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>编写py脚本对程序进行pintool攻击即可。</p>
+<blockquote>
+<p>最近初涉二进制插桩技术和pintool的简单使用，某些地方可能有错误理解，同时多线程的脚本可能写的有点拉跨，还望师傅们指正。</p>
+</blockquote>
+<hr>
+<p>参考:</p>
+<p>[pin install]起初配置参考: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/mgdzy/p/13644475.html">https://www.cnblogs.com/mgdzy/p/13644475.html</a></p>
+<p>[pin in ctf]<a target="_blank" rel="noopener" href="https://m4x.fun/post/pin-in-ctf/">https://m4x.fun/post/pin-in-ctf/</a></p>
+<p>[cpu侧信道]<a target="_blank" rel="noopener" href="https://www.istt.org.cn/NewsDetail/2672118.html">https://www.istt.org.cn/NewsDetail/2672118.html</a></p>
+<p>[多线程脚本编写]<a target="_blank" rel="noopener" href="https://www.cnblogs.com/franknihao/p/6627857.html">https://www.cnblogs.com/franknihao/p/6627857.html</a></p>
+<p>low_re链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/17-1WMhu9g5scBQ-RO6MO9Q">https://pan.baidu.com/s/17-1WMhu9g5scBQ-RO6MO9Q</a><br>提取码：uuuu</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Lu1u</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/12/31/PinTool-CPU%E4%BE%A7%E4%BF%A1%E9%81%93/">http://example.com/2021/12/31/PinTool-CPU%E4%BE%A7%E4%BF%A1%E9%81%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.shi1011.cn/2021/12/cbe91a9658490131c13ef122dafbf8d3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/12/18/dp%E5%92%8Cdq%E6%B3%84%E9%9C%B2/"><img class="next-cover" src="https://res.cloudinary.com/lu1u/image/upload/v1639802724/blog_img/CTF_cover/wallhaven-j3lqlw_u0iivg.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">RSA dp和dq泄露</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lu1u.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lu1u</div><div class="author-info__description">Never back</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/smallboyZ"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/smallboyZ" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:3194679102@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">沿途风景正好!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IntelPin%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">IntelPin的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">条件准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VS"><span class="toc-number">1.1.1.</span> <span class="toc-text">VS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cygwin"><span class="toc-number">1.1.2.</span> <span class="toc-text">Cygwin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Intel-Pin"><span class="toc-number">1.1.3.</span> <span class="toc-text">Intel Pin</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pin%E5%9C%A8CTF%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">Pin在CTF中的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#low-re"><span class="toc-number">2.1.</span> <span class="toc-text">low_re</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%86%E7%A0%B4%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6"><span class="toc-number">2.1.1.</span> <span class="toc-text">爆破输入长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%86%E7%A0%B4%E8%BE%93%E5%85%A5%E5%86%85%E5%AE%B9"><span class="toc-number">2.1.2.</span> <span class="toc-text">爆破输入内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#check%E5%88%A4%E6%96%AD%E8%AE%A1%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">check判断计数</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/31/PinTool-CPU%E4%BE%A7%E4%BF%A1%E9%81%93/" title="PinTool-CPU侧信道"><img src="https://cdn.shi1011.cn/2021/12/cbe91a9658490131c13ef122dafbf8d3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PinTool-CPU侧信道"/></a><div class="content"><a class="title" href="/2021/12/31/PinTool-CPU%E4%BE%A7%E4%BF%A1%E9%81%93/" title="PinTool-CPU侧信道">PinTool-CPU侧信道</a><time datetime="2021-12-31T13:53:37.000Z" title="Created 2021-12-31 21:53:37">2021-12-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/18/dp%E5%92%8Cdq%E6%B3%84%E9%9C%B2/" title="RSA dp和dq泄露"><img src="https://res.cloudinary.com/lu1u/image/upload/v1639802724/blog_img/CTF_cover/wallhaven-j3lqlw_u0iivg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RSA dp和dq泄露"/></a><div class="content"><a class="title" href="/2021/12/18/dp%E5%92%8Cdq%E6%B3%84%E9%9C%B2/" title="RSA dp和dq泄露">RSA dp和dq泄露</a><time datetime="2021-12-18T04:40:38.000Z" title="Created 2021-12-18 12:40:38">2021-12-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/01/2021NCTF-RE/" title="2021NCTF-Re"><img src="https://bu.dusays.com/2021/12/01/88ccec55e64a1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2021NCTF-Re"/></a><div class="content"><a class="title" href="/2021/12/01/2021NCTF-RE/" title="2021NCTF-Re">2021NCTF-Re</a><time datetime="2021-12-01T02:27:36.000Z" title="Created 2021-12-01 10:27:36">2021-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/01/GFCTF2021-RE/" title="GFCTF2021-RE"><img src="https://bu.dusays.com/2021/12/01/6819e6a909b53.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GFCTF2021-RE"/></a><div class="content"><a class="title" href="/2021/12/01/GFCTF2021-RE/" title="GFCTF2021-RE">GFCTF2021-RE</a><time datetime="2021-12-01T01:55:26.000Z" title="Created 2021-12-01 09:55:26">2021-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/21/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912021/" title="西湖论剑2021-Re"><img src="https://mediabluk.cnr.cn/img/cnr/CNRCDP/2021/1101/f280e289735c1163573267423187913910.jpg?auth=3a6b80b01faf9b287a0684f1825e6f7c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="西湖论剑2021-Re"/></a><div class="content"><a class="title" href="/2021/11/21/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912021/" title="西湖论剑2021-Re">西湖论剑2021-Re</a><time datetime="2021-11-21T15:33:43.000Z" title="Created 2021-11-21 23:33:43">2021-11-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.shi1011.cn/2021/12/cbe91a9658490131c13ef122dafbf8d3.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 By Lu1u</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '1309fd935c8171290758',
+      clientSecret: '6a4b26253863498a69d7d5d9690aedd1d58e68d7',
+      repo: 'smallboyZ.github.io',
+      owner: 'smallboyZ',
+      admin: ['smallboyZ'],
+      id: '7a93eb62b1f87601f6554497711edf3f',
+      language: 'en',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
