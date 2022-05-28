@@ -20,7 +20,11 @@
       
         <tags>
             
-            <tag> WER,CEF,LuaJIT </tag>
+            <tag> WER </tag>
+            
+            <tag> CEF </tag>
+            
+            <tag> LuaJIT </tag>
             
         </tags>
       
