@@ -1,164 +1,262 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DAS_5月_出题人挑战赛 | Lu1u</title><meta name="keywords" content="WER,CEF,LuaJIT"><meta name="author" content="Lu1u"><meta name="copyright" content="Lu1u"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="DAS5月坐牢大赛反思">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/QQ图片20211218184601.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Lightu&#39;s Blog">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DAS5月坐牢大赛反思">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DAS_5月_出题人挑战赛">
 <meta property="og:url" content="http://example.com/2022/05/28/2022DAS5%E6%9C%88/index.html">
-<meta property="og:site_name" content="Lu1u">
+<meta property="og:site_name" content="Lightu">
 <meta property="og:description" content="DAS5月坐牢大赛反思">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/xx.png">
 <meta property="article:published_time" content="2022-05-28T13:33:39.954Z">
-<meta property="article:modified_time" content="2022-05-28T13:53:58.791Z">
-<meta property="article:author" content="Lu1u">
+<meta property="article:modified_time" content="2022-09-27T14:42:36.364Z">
+<meta property="article:author" content="Lightu&#39;s Blog">
 <meta property="article:tag" content="WER">
 <meta property="article:tag" content="CEF">
 <meta property="article:tag" content="LuaJIT">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/xx.png"><link rel="shortcut icon" href="/img/lu1u.png"><link rel="canonical" href="http://example.com/2022/05/28/2022DAS5%E6%9C%88/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?0f01cab8e7de8c05f9158b21e6d25f0c";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
-  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '天',
-  date_suffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'DAS_5月_出题人挑战赛',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2022-05-28 21:53:58'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/xx.png">
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
   
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
+  <title>DAS_5月_出题人挑战赛 - Lightu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  
     
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
     
-    const detectApple = () => {
-      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 5.4.0">
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0,"placement":"right"},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"follow_dnt":true},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lu1u.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/xx.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Lu1u</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DAS_5月_出题人挑战赛</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-28T13:33:39.954Z" title="发表于 2022-05-28 21:33:39">2022-05-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-28T13:53:58.791Z" title="更新于 2022-05-28 21:53:58">2022-05-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF-WP/">CTF-WP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DAS_5月_出题人挑战赛"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>DAS 5月</h1>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lightu&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/wallhaven-l3v7pr.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="DAS_5月_出题人挑战赛">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-28 21:33" pubdate>
+        2022年5月28日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      12k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      102 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DAS_5月_出题人挑战赛</h1>
+            
+            <div class="markdown-body">
+              <h1>DAS 5月</h1>
 <blockquote>
 <p>隔天就要考试，单纯摸了摸，看能否摸到工作量少的，于是选择了luajit，网上的方法几乎尝试了一遍也没有解决方案，版本信息没有，luajit自带的反汇编尝试无果，体验极差。</p>
 </blockquote>
@@ -167,14 +265,14 @@
 <blockquote>
 <p>bcf虚假控制流，真正的逻辑不在main，而是在某个函数内对输入进行了转存，之后又进行了相关处理。</p>
 </blockquote>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527091239631.png" alt="image-20220527091239631"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527091239631.png" srcset="/img/loading.gif" lazyload alt="image-20220527091239631"></p>
 <p>直接定位到输入部分，要求输入为38位并且将输入存入两个xmmword下。</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527091852751.png" alt="image-20220527091852751"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527091852751.png" srcset="/img/loading.gif" lazyload alt="image-20220527091852751"></p>
 <p>跟进<code>sub_1400DB50</code>,a2中存放的我们的输入，可见对输入进行了转移，之后对<code>xmmword_140035C20</code>交叉引用，定位到一个新的处理函数。</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527092129863.png" alt="image-20220527092129863"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527092129863.png" srcset="/img/loading.gif" lazyload alt="image-20220527092129863"></p>
 <p>check逻辑为 input[i]^v3[i]==102 ,循环32次如果成功就输出correct。</p>
 <p><code>exp</code></p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enc=[<span class="number">0x05</span>, <span class="number">0x03</span>, <span class="number">0x55</span>, <span class="number">0x05</span>, <span class="number">0x04</span>, <span class="number">0x07</span>, <span class="number">0x5E</span>, <span class="number">0x54</span>, <span class="number">0x05</span>, <span class="number">0x07</span>, <span class="number">0x50</span>, <span class="number">0x02</span>, <span class="number">0x03</span>, <span class="number">0x53</span>, <span class="number">0x5F</span>, <span class="number">0x50</span>, <span class="number">0x53</span>, <span class="number">0x50</span>, <span class="number">0x53</span>, <span class="number">0x05</span>, <span class="number">0x55</span>, <span class="number">0x00</span>, <span class="number">0x54</span>, <span class="number">0x55</span>, <span class="number">0x57</span>, <span class="number">0x03</span>, <span class="number">0x05</span>, <span class="number">0x02</span>, <span class="number">0x52</span>, <span class="number">0x50</span>, <span class="number">0x51</span>, <span class="number">0x53</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(enc)):</span><br><span class="line">    enc[i]^=<span class="number">102</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">b'flag{'</span>+<span class="built_in">bytes</span>(enc)+<span class="string">b'}'</span>)</span><br><span class="line"><span class="comment">#flag{ce3cba82ca6de596565c3f231ecd4675}</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs python">enc=[<span class="hljs-number">0x05</span>, <span class="hljs-number">0x03</span>, <span class="hljs-number">0x55</span>, <span class="hljs-number">0x05</span>, <span class="hljs-number">0x04</span>, <span class="hljs-number">0x07</span>, <span class="hljs-number">0x5E</span>, <span class="hljs-number">0x54</span>, <span class="hljs-number">0x05</span>, <span class="hljs-number">0x07</span>, <span class="hljs-number">0x50</span>, <span class="hljs-number">0x02</span>, <span class="hljs-number">0x03</span>, <span class="hljs-number">0x53</span>, <span class="hljs-number">0x5F</span>, <span class="hljs-number">0x50</span>, <span class="hljs-number">0x53</span>, <span class="hljs-number">0x50</span>, <span class="hljs-number">0x53</span>, <span class="hljs-number">0x05</span>, <span class="hljs-number">0x55</span>, <span class="hljs-number">0x00</span>, <span class="hljs-number">0x54</span>, <span class="hljs-number">0x55</span>, <span class="hljs-number">0x57</span>, <span class="hljs-number">0x03</span>, <span class="hljs-number">0x05</span>, <span class="hljs-number">0x02</span>, <span class="hljs-number">0x52</span>, <span class="hljs-number">0x50</span>, <span class="hljs-number">0x51</span>, <span class="hljs-number">0x53</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(enc)):<br>    enc[i]^=<span class="hljs-number">102</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">b'flag{'</span>+<span class="hljs-built_in">bytes</span>(enc)+<span class="hljs-string">b'}'</span>)<br><span class="hljs-comment">#flag{ce3cba82ca6de596565c3f231ecd4675}</span><br></code></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>下次时间紧还是老老实实摸windows了，不摸不熟悉的领域。😭😭😭</p>
 </blockquote>
@@ -184,21 +282,21 @@
 <p>错误报告功能使用户能够通知微软有关应用程序故障、内核故障、无反应的应用程序和其他应用程序的具体问题。并且可以使用应用程序恢复和重启(ARR)，以确保客户在其应用程序崩溃时不会丢失数据，并允许用户快速返回到他们的任务。</p>
 </blockquote>
 <p>对getflag的主要函数进行交叉引用，观察函数调用的关系。</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527124229347.png" alt="image-20220527124229347"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527124229347.png" srcset="/img/loading.gif" lazyload alt="image-20220527124229347"></p>
 <p><strong>首先atexit注册了终止函数，可以在任何地方注册终止函数，并且他在程序结束时调用。</strong></p>
 <p>并且注册是在main函数运行前完成的。</p>
 <blockquote>
 <p>initterm函数负责遍历函数指针表并初始化它们的内部方法。</p>
 </blockquote>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527125654996.png" alt="image-20220527125654996"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527125654996.png" srcset="/img/loading.gif" lazyload alt="image-20220527125654996"></p>
 <blockquote>
 <p>这个特性为其能隐藏控制流，偷天换日，图穷而匕不见提供了支撑。</p>
 </blockquote>
 <p>其次是注册了<strong>恢复回调函数</strong></p>
 <p>如果应用程序遇到未处理的异常或变得无响应，Windows 错误报告 （WER） 将调用指定的恢复回调。</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HRESULT <span class="title">RegisterApplicationRecoveryCallback</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]           APPLICATION_RECOVERY_CALLBACK pRecoveyCallback, <span class="comment">//恢复函数指针</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in, optional] PVOID                         pvParameter,      <span class="comment">//传递变量的指针，可为空</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]           DWORD                         dwPingInterval,   <span class="comment">//恢复 ping 间隔，以毫秒为单位，必须要在这个间隔内调用ApplicationRecoveryInProgress函数来说明正在主动恢复，否则会被wer终止。</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]           DWORD                         dwFlags           <span class="comment">//目前无意义</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br><span class="line"></span><br><span class="line">ApplicationRecoveryInProgress(&amp;pbCancelled);<span class="comment">// 指示调用应用程序正在继续恢复数据。</span></span><br><span class="line"></span><br><span class="line"><span class="function">HRESULT <span class="title">ApplicationRecoveryInProgress</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [out] PBOOL pbCancelled    <span class="comment">//用户是否取消恢复，由wer设置 ;取消恢复/恢复完成时 pbCancelled为1</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ApplicationRecoveryFinished</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] BOOL bSuccess          <span class="comment">//恢复成功输入为1 不成功为0</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-function">HRESULT <span class="hljs-title">RegisterApplicationRecoveryCallback</span><span class="hljs-params">(</span></span><br><span class="hljs-params"><span class="hljs-function">  [in]           APPLICATION_RECOVERY_CALLBACK pRecoveyCallback, <span class="hljs-comment">//恢复函数指针</span></span></span><br><span class="hljs-params"><span class="hljs-function">  [in, optional] PVOID                         pvParameter,      <span class="hljs-comment">//传递变量的指针，可为空</span></span></span><br><span class="hljs-params"><span class="hljs-function">  [in]           DWORD                         dwPingInterval,   <span class="hljs-comment">//恢复 ping 间隔，以毫秒为单位，必须要在这个间隔内调用ApplicationRecoveryInProgress函数来说明正在主动恢复，否则会被wer终止。</span></span></span><br><span class="hljs-params"><span class="hljs-function">  [in]           DWORD                         dwFlags           <span class="hljs-comment">//目前无意义</span></span></span><br><span class="hljs-params"><span class="hljs-function">)</span></span>;<br><br>ApplicationRecoveryInProgress(&amp;pbCancelled);<span class="hljs-comment">// 指示调用应用程序正在继续恢复数据。</span><br><br><span class="hljs-function">HRESULT <span class="hljs-title">ApplicationRecoveryInProgress</span><span class="hljs-params">(</span></span><br><span class="hljs-params"><span class="hljs-function">  [out] PBOOL pbCancelled    <span class="hljs-comment">//用户是否取消恢复，由wer设置 ;取消恢复/恢复完成时 pbCancelled为1</span></span></span><br><span class="hljs-params"><span class="hljs-function">)</span></span>;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ApplicationRecoveryFinished</span><span class="hljs-params">(</span></span><br><span class="hljs-params"><span class="hljs-function">  [in] BOOL bSuccess          <span class="hljs-comment">//恢复成功输入为1 不成功为0</span></span></span><br><span class="hljs-params"><span class="hljs-function">)</span></span>;<br><br></code></pre></td></tr></tbody></table></figure>
 <p><code>注册函数</code></p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> __fastcall <span class="title">sub_14000F4A0</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  HWND ForegroundWindow; <span class="comment">// rax</span></span><br><span class="line"></span><br><span class="line">  ForegroundWindow = GetForegroundWindow();     <span class="comment">//检索前台窗口的句柄（用户当前正在使用的窗口）</span></span><br><span class="line">  WerReportHang(ForegroundWindow, <span class="number">0</span>i64);        <span class="comment">// wer函数，在指定的窗口上启动“无响应”报告。</span></span><br><span class="line">  sub_14000F490(); <span class="comment">//没有执行到 进程就结束了</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">.text:<span class="number">000000014000F</span>490 sub_14000F490   proc near               ; CODE XREF: sub_14000F4A0+<span class="number">19</span>↓j</span><br><span class="line">.text:<span class="number">000000014000F</span>490                                         ; DATA XREF: .pdata:<span class="number">0000000140036894</span>↓o</span><br><span class="line">.text:<span class="number">000000014000F</span>490 ; __unwind { <span class="comment">// sub_140010E50</span></span><br><span class="line">.text:<span class="number">000000014000F</span>490                 <span class="keyword">xor</span>     ecx, ecx</span><br><span class="line">.text:<span class="number">000000014000F</span>492                 mov     eax, <span class="number">61</span>h ; <span class="string">'a'</span></span><br><span class="line">.text:<span class="number">000000014000F</span>497                 mov     [rcx], ax    <span class="comment">//内存地址0是未分配的区域 会引发内存访问异常</span></span><br><span class="line">.text:<span class="number">000000014000F</span>49A                 retn</span><br><span class="line">.text:<span class="number">000000014000F</span>49A ; } <span class="comment">// starts at 14000F490</span></span><br><span class="line">.text:<span class="number">000000014000F</span>49A sub_14000F490   endp</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> __fastcall <span class="hljs-title">sub_14000F4A0</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>{<br>  HWND ForegroundWindow; <span class="hljs-comment">// rax</span><br><br>  ForegroundWindow = GetForegroundWindow();     <span class="hljs-comment">//检索前台窗口的句柄（用户当前正在使用的窗口）</span><br>  WerReportHang(ForegroundWindow, <span class="hljs-number">0</span>i64);        <span class="hljs-comment">// wer函数，在指定的窗口上启动“无响应”报告。</span><br>  sub_14000F490(); <span class="hljs-comment">//没有执行到 进程就结束了</span><br>}<br><br>.text:<span class="hljs-number">000000014000F</span>490 sub_14000F490   proc near               ; CODE XREF: sub_14000F4A0+<span class="hljs-number">19</span>↓j<br>.text:<span class="hljs-number">000000014000F</span>490                                         ; DATA XREF: .pdata:<span class="hljs-number">0000000140036894</span>↓o<br>.text:<span class="hljs-number">000000014000F</span>490 ; __unwind { <span class="hljs-comment">// sub_140010E50</span><br>.text:<span class="hljs-number">000000014000F</span>490                 <span class="hljs-keyword">xor</span>     ecx, ecx<br>.text:<span class="hljs-number">000000014000F</span>492                 mov     eax, <span class="hljs-number">61</span>h ; <span class="hljs-string">'a'</span><br>.text:<span class="hljs-number">000000014000F</span>497                 mov     [rcx], ax    <span class="hljs-comment">//内存地址0是未分配的区域 会引发内存访问异常</span><br>.text:<span class="hljs-number">000000014000F</span>49A                 retn<br>.text:<span class="hljs-number">000000014000F</span>49A ; } <span class="hljs-comment">// starts at 14000F490</span><br>.text:<span class="hljs-number">000000014000F</span>49A sub_14000F490   endp<br><br></code></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>因为Windows会自动报告未处理的异常，应用程序不应该处理致命的异常。</p>
 <p>如果出现故障或不响应的进程是交互式的，WER会显示一个用户界面，告知用户这个问题。</p>
@@ -216,52 +314,52 @@
 <p>程序的依赖有点多，当时存下文件就没细看，后来看群#REtard师傅发了一张图，看着有点熟悉的sm4，终于还是对他下手了。</p>
 </blockquote>
 <p>运行程序，会有一段报错，不过可以根据这个明文信息进行搜索。</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527201157512.png" alt="image-20220527201157512"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527201157512.png" srcset="/img/loading.gif" lazyload alt="image-20220527201157512"></p>
 <p>查看strings窗口，交叉引用<code>please input your flag</code>得到的代码逻辑非check逻辑，应该是在注册窗口。</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527201315343.png" alt="image-20220527201315343"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527201315343.png" srcset="/img/loading.gif" lazyload alt="image-20220527201315343"></p>
 <p>可以在数据段对其他可疑的数据进行交叉引用，尤其是长度为32位的(经典flag len)，或者是加密逻辑中需要用的数据表。</p>
 <p>可以通过交叉引用定位到<code>sub_44F360</code>函数，其中一些显示明文有异或解密得到。</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527202145352.png" alt="image-20220527202145352"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527202145352.png" srcset="/img/loading.gif" lazyload alt="image-20220527202145352"></p>
 <p>解密可得document.write(‘%c’); 并且之后其他字符可得alert(‘Correct’)。</p>
 <blockquote>
 <p>😀😀😀，通过解密出的一些明文字符和加密逻辑走向确定该处是关键check点。</p>
 </blockquote>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527202548836.png" alt="image-20220527202548836"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527202548836.png" srcset="/img/loading.gif" lazyload alt="image-20220527202548836"></p>
 <p>这步逻辑没有涉及输入，如果有了解过<a target="_blank" rel="noopener" href="https://github.com/smallboyZ/Reverse_Crypto/blob/main/SM4/sm4.c">SM4 - mygithub</a>加密的话，可以看出他大致为秘钥扩展的过程，由TK生成CK(轮秘钥)，不过进行了简化没有sbox的替换过程。</p>
 <blockquote>
 <p>并且出题人对细节处理比较好，对空间进行了优化，通过模运算来使轮秘钥的生成更节省空间。</p>
 </blockquote>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sm4_exkey</span><span class="params">(<span class="keyword">uint32_t</span>*mkey)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) { <span class="comment">//初始秘钥异或FK</span></span><br><span class="line">        mkey[i] ^= FK[i];</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    rK = (<span class="keyword">uint32_t</span>*)(mkey + <span class="number">4</span>);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++) {</span><br><span class="line">        <span class="keyword">uint32_t</span> tmp = mkey[i + <span class="number">1</span>] ^ mkey[i + <span class="number">2</span>] ^ mkey[i + <span class="number">3</span>] ^ CK[i];</span><br><span class="line">        sbox_replace(&amp;tmp);      </span><br><span class="line">        rK[i]=mkey[i]^L2(tmp);</span><br><span class="line">    } </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sm4_exkey</span><span class="hljs-params">(<span class="hljs-keyword">uint32_t</span>*mkey)</span> </span>{<br>    <span class="hljs-keyword">int</span> i;<br><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++) { <span class="hljs-comment">//初始秘钥异或FK</span><br>        mkey[i] ^= FK[i];<br>    }<br><br>    rK = (<span class="hljs-keyword">uint32_t</span>*)(mkey + <span class="hljs-number">4</span>);<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++) {<br>        <span class="hljs-keyword">uint32_t</span> tmp = mkey[i + <span class="hljs-number">1</span>] ^ mkey[i + <span class="hljs-number">2</span>] ^ mkey[i + <span class="hljs-number">3</span>] ^ CK[i];<br>        sbox_replace(&amp;tmp);      <br>        rK[i]=mkey[i]^L2(tmp);<br>    } <br>}<br></code></pre></td></tr></tbody></table></figure>
 <p>python模拟实现如下</p>
 <blockquote>
 <p>命名可能有些差异，主要是加密流程。</p>
 </blockquote>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rol</span>(<span class="params">n,x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (n&lt;&lt;x | n&gt;&gt;(<span class="number">32</span>-x))&amp;<span class="number">0xffffffff</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ror</span>(<span class="params">n,x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (n&gt;&gt;x | n&lt;&lt;(<span class="number">32</span>-x))&amp;<span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x=[<span class="number">0xA3B1BAC6</span>, <span class="number">0x56AA3350</span>, <span class="number">0x677D9197</span>, <span class="number">0xB27022DC</span>]</span><br><span class="line">s=[<span class="number">0x12345678</span>, <span class="number">0x90ABCDEF</span>, <span class="number">0xFEDCBA09</span>, <span class="number">0x87654321</span>]</span><br><span class="line">block=[x[i]^s[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line"></span><br><span class="line">tb=[<span class="number">0x00070E15</span>, <span class="number">0x1C232A31</span>, <span class="number">0x383F464D</span>, <span class="number">0x545B6269</span>, <span class="number">0x70777E85</span>, <span class="number">0x8C939AA1</span>, <span class="number">0xA8AFB6BD</span>, <span class="number">0xC4CBD2D9</span>, <span class="number">0xE0E7EEF5</span>, <span class="number">0xFC030A11</span>, <span class="number">0x181F262D</span>, <span class="number">0x343B4249</span>, <span class="number">0x50575E65</span>, <span class="number">0x6C737A81</span>, <span class="number">0x888F969D</span>, <span class="number">0xA4ABB2B9</span>, <span class="number">0xC0C7CED5</span>, <span class="number">0xDCE3EAF1</span>, <span class="number">0xF8FF060D</span>, <span class="number">0x141B2229</span>, <span class="number">0x30373E45</span>, <span class="number">0x4C535A61</span>, <span class="number">0x686F767D</span>, <span class="number">0x848B9299</span>, <span class="number">0xA0A7AEB5</span>, <span class="number">0xBCC3CAD1</span>, <span class="number">0xD8DFE6ED</span>, <span class="number">0xF4FB0209</span>, <span class="number">0x10171E25</span>, <span class="number">0x2C333A41</span>, <span class="number">0x484F565D</span>, <span class="number">0x646B7279</span>] <span class="comment">#其实这是SM4标准的CK</span></span><br><span class="line"></span><br><span class="line">ck=[]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>):</span><br><span class="line">    v11=tb[i]^block[(i+<span class="number">1</span>)%<span class="number">4</span>]^block[(i+<span class="number">2</span>)%<span class="number">4</span>]^block[(i+<span class="number">3</span>)%<span class="number">4</span>]</span><br><span class="line">    t=v11^ror(v11,<span class="number">9</span>)^rol(v11,<span class="number">13</span>)</span><br><span class="line">    block[i%<span class="number">4</span>]=block[i%<span class="number">4</span>]^t</span><br><span class="line">    ck.append(block[i%<span class="number">4</span>])</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rol</span>(<span class="hljs-params">n,x</span>):</span><br>    <span class="hljs-keyword">return</span> (n&lt;&lt;x | n&gt;&gt;(<span class="hljs-number">32</span>-x))&amp;<span class="hljs-number">0xffffffff</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ror</span>(<span class="hljs-params">n,x</span>):</span><br>    <span class="hljs-keyword">return</span> (n&gt;&gt;x | n&lt;&lt;(<span class="hljs-number">32</span>-x))&amp;<span class="hljs-number">0xffffffff</span><br><br><br>x=[<span class="hljs-number">0xA3B1BAC6</span>, <span class="hljs-number">0x56AA3350</span>, <span class="hljs-number">0x677D9197</span>, <span class="hljs-number">0xB27022DC</span>]<br>s=[<span class="hljs-number">0x12345678</span>, <span class="hljs-number">0x90ABCDEF</span>, <span class="hljs-number">0xFEDCBA09</span>, <span class="hljs-number">0x87654321</span>]<br>block=[x[i]^s[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>)]<br><br>tb=[<span class="hljs-number">0x00070E15</span>, <span class="hljs-number">0x1C232A31</span>, <span class="hljs-number">0x383F464D</span>, <span class="hljs-number">0x545B6269</span>, <span class="hljs-number">0x70777E85</span>, <span class="hljs-number">0x8C939AA1</span>, <span class="hljs-number">0xA8AFB6BD</span>, <span class="hljs-number">0xC4CBD2D9</span>, <span class="hljs-number">0xE0E7EEF5</span>, <span class="hljs-number">0xFC030A11</span>, <span class="hljs-number">0x181F262D</span>, <span class="hljs-number">0x343B4249</span>, <span class="hljs-number">0x50575E65</span>, <span class="hljs-number">0x6C737A81</span>, <span class="hljs-number">0x888F969D</span>, <span class="hljs-number">0xA4ABB2B9</span>, <span class="hljs-number">0xC0C7CED5</span>, <span class="hljs-number">0xDCE3EAF1</span>, <span class="hljs-number">0xF8FF060D</span>, <span class="hljs-number">0x141B2229</span>, <span class="hljs-number">0x30373E45</span>, <span class="hljs-number">0x4C535A61</span>, <span class="hljs-number">0x686F767D</span>, <span class="hljs-number">0x848B9299</span>, <span class="hljs-number">0xA0A7AEB5</span>, <span class="hljs-number">0xBCC3CAD1</span>, <span class="hljs-number">0xD8DFE6ED</span>, <span class="hljs-number">0xF4FB0209</span>, <span class="hljs-number">0x10171E25</span>, <span class="hljs-number">0x2C333A41</span>, <span class="hljs-number">0x484F565D</span>, <span class="hljs-number">0x646B7279</span>] <span class="hljs-comment">#其实这是SM4标准的CK</span><br><br>ck=[]<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>):<br>    v11=tb[i]^block[(i+<span class="hljs-number">1</span>)%<span class="hljs-number">4</span>]^block[(i+<span class="hljs-number">2</span>)%<span class="hljs-number">4</span>]^block[(i+<span class="hljs-number">3</span>)%<span class="hljs-number">4</span>]<br>    t=v11^ror(v11,<span class="hljs-number">9</span>)^rol(v11,<span class="hljs-number">13</span>)<br>    block[i%<span class="hljs-number">4</span>]=block[i%<span class="hljs-number">4</span>]^t<br>    ck.append(block[i%<span class="hljs-number">4</span>])<br></code></pre></td></tr></tbody></table></figure>
 <p>之后可以观察到调用了CK_table,并且将输入4个一组转为DWORD类型，之后调用<code>sub_4520E0</code>进行加密。</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527204027178.png" alt="image-20220527204027178"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527204027178.png" srcset="/img/loading.gif" lazyload alt="image-20220527204027178"></p>
 <p><code>sub_4520E0</code>函数加密主体如下</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527204401527.png" alt="image-20220527204401527"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527204401527.png" srcset="/img/loading.gif" lazyload alt="image-20220527204401527"></p>
 <p>过程与秘钥扩展类似。</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mstr=[<span class="number">0</span>]*<span class="number">32</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>):</span><br><span class="line">    v3=ck[i]^mstr[(i+<span class="number">1</span>)%<span class="number">4</span>]^mstr[(i+<span class="number">2</span>)%<span class="number">4</span>]^mstr[(i+<span class="number">3</span>)%<span class="number">4</span>]</span><br><span class="line">    t=v3^rol(v3,<span class="number">2</span>)^ror(v3,<span class="number">8</span>)^rol(v3,<span class="number">10</span>)^ror(v3,<span class="number">14</span>)</span><br><span class="line">    mstr[i%<span class="number">4</span>]=mstr[i%<span class="number">4</span>]^t</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">mstr=[<span class="hljs-number">0</span>]*<span class="hljs-number">32</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>):<br>    v3=ck[i]^mstr[(i+<span class="hljs-number">1</span>)%<span class="hljs-number">4</span>]^mstr[(i+<span class="hljs-number">2</span>)%<span class="hljs-number">4</span>]^mstr[(i+<span class="hljs-number">3</span>)%<span class="hljs-number">4</span>]<br>    t=v3^rol(v3,<span class="hljs-number">2</span>)^ror(v3,<span class="hljs-number">8</span>)^rol(v3,<span class="hljs-number">10</span>)^ror(v3,<span class="hljs-number">14</span>)<br>    mstr[i%<span class="hljs-number">4</span>]=mstr[i%<span class="hljs-number">4</span>]^t<br></code></pre></td></tr></tbody></table></figure>
 <p>之后再赋值时，Block[0-3] 分别对应 v42、v41、v40、v39，之后存到CK[5]开始的地址，所以在二轮解密时ck的4个数据被替换。</p>
 <p>综上，解密流程如下。</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rol</span>(<span class="params">n,x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (n&lt;&lt;x | n&gt;&gt;(<span class="number">32</span>-x))&amp;<span class="number">0xffffffff</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ror</span>(<span class="params">n,x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (n&gt;&gt;x | n&lt;&lt;(<span class="number">32</span>-x))&amp;<span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x=[<span class="number">0xA3B1BAC6</span>, <span class="number">0x56AA3350</span>, <span class="number">0x677D9197</span>, <span class="number">0xB27022DC</span>]</span><br><span class="line">s=[<span class="number">0x12345678</span>, <span class="number">0x90ABCDEF</span>, <span class="number">0xFEDCBA09</span>, <span class="number">0x87654321</span>]</span><br><span class="line">block=[x[i]^s[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line"></span><br><span class="line">tb=[<span class="number">0x00070E15</span>, <span class="number">0x1C232A31</span>, <span class="number">0x383F464D</span>, <span class="number">0x545B6269</span>, <span class="number">0x70777E85</span>, <span class="number">0x8C939AA1</span>, <span class="number">0xA8AFB6BD</span>, <span class="number">0xC4CBD2D9</span>, <span class="number">0xE0E7EEF5</span>, <span class="number">0xFC030A11</span>, <span class="number">0x181F262D</span>, <span class="number">0x343B4249</span>, <span class="number">0x50575E65</span>, <span class="number">0x6C737A81</span>, <span class="number">0x888F969D</span>, <span class="number">0xA4ABB2B9</span>, <span class="number">0xC0C7CED5</span>, <span class="number">0xDCE3EAF1</span>, <span class="number">0xF8FF060D</span>, <span class="number">0x141B2229</span>, <span class="number">0x30373E45</span>, <span class="number">0x4C535A61</span>, <span class="number">0x686F767D</span>, <span class="number">0x848B9299</span>, <span class="number">0xA0A7AEB5</span>, <span class="number">0xBCC3CAD1</span>, <span class="number">0xD8DFE6ED</span>, <span class="number">0xF4FB0209</span>, <span class="number">0x10171E25</span>, <span class="number">0x2C333A41</span>, <span class="number">0x484F565D</span>, <span class="number">0x646B7279</span>]</span><br><span class="line"></span><br><span class="line">ck=[]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>):</span><br><span class="line">    v11=tb[i]^block[(i+<span class="number">1</span>)%<span class="number">4</span>]^block[(i+<span class="number">2</span>)%<span class="number">4</span>]^block[(i+<span class="number">3</span>)%<span class="number">4</span>]</span><br><span class="line">    t=v11^ror(v11,<span class="number">9</span>)^rol(v11,<span class="number">13</span>)</span><br><span class="line">    block[i%<span class="number">4</span>]=block[i%<span class="number">4</span>]^t</span><br><span class="line">    ck.append(block[i%<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line"><span class="string">""" encry</span></span><br><span class="line"><span class="string">mstr=[0]*32</span></span><br><span class="line"><span class="string">for i in range(32):</span></span><br><span class="line"><span class="string">    v3=ck[i]^mstr[(i+1)%4]^mstr[(i+2)%4]^mstr[(i+3)%4]</span></span><br><span class="line"><span class="string">    t=v3^rol(v3,2)^ror(v3,8)^rol(v3,10)^ror(v3,14)</span></span><br><span class="line"><span class="string">    mstr[i%4]=mstr[i%4]^t</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decry</span>(<span class="params">enc</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">31</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        v3 = ck[i] ^ enc[(i + <span class="number">1</span>) % <span class="number">4</span>] ^ enc[(i + <span class="number">2</span>) % <span class="number">4</span>] ^ enc[(i + <span class="number">3</span>) % <span class="number">4</span>]</span><br><span class="line">        t = v3 ^ rol(v3, <span class="number">2</span>) ^ ror(v3, <span class="number">8</span>) ^ rol(v3, <span class="number">10</span>) ^ ror(v3, <span class="number">14</span>)</span><br><span class="line">        enc[i % <span class="number">4</span>] = enc[i % <span class="number">4</span>] ^ t</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">enc=[<span class="number">0xC0CB547D</span>, <span class="number">0xD7F5DB74</span>, <span class="number">0x1B92D96F</span>, <span class="number">0x204628EB</span>, <span class="number">0x60D3D5E5</span>, <span class="number">0x2F366D80</span>, <span class="number">0x612F63B0</span>, <span class="number">0x30A90F20</span>]</span><br><span class="line">c1=enc[:<span class="number">4</span>][::-<span class="number">1</span>]</span><br><span class="line">decry(c1)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">int</span>.to_bytes(c1[i], <span class="number">4</span>, <span class="string">'little'</span>).decode(),end=<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    ck[<span class="number">5</span>+i]=enc[i]</span><br><span class="line"></span><br><span class="line">c2=enc[<span class="number">4</span>:][::-<span class="number">1</span>]</span><br><span class="line">decry(c2)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">int</span>.to_bytes(c2[i], <span class="number">4</span>, <span class="string">'little'</span>).decode(),end=<span class="string">''</span>)</span><br><span class="line"><span class="comment">#flag{3b2365b04700b5eac3a5fd0ba21b687f}</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rol</span>(<span class="hljs-params">n,x</span>):</span><br>    <span class="hljs-keyword">return</span> (n&lt;&lt;x | n&gt;&gt;(<span class="hljs-number">32</span>-x))&amp;<span class="hljs-number">0xffffffff</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ror</span>(<span class="hljs-params">n,x</span>):</span><br>    <span class="hljs-keyword">return</span> (n&gt;&gt;x | n&lt;&lt;(<span class="hljs-number">32</span>-x))&amp;<span class="hljs-number">0xffffffff</span><br><br><br>x=[<span class="hljs-number">0xA3B1BAC6</span>, <span class="hljs-number">0x56AA3350</span>, <span class="hljs-number">0x677D9197</span>, <span class="hljs-number">0xB27022DC</span>]<br>s=[<span class="hljs-number">0x12345678</span>, <span class="hljs-number">0x90ABCDEF</span>, <span class="hljs-number">0xFEDCBA09</span>, <span class="hljs-number">0x87654321</span>]<br>block=[x[i]^s[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>)]<br><br>tb=[<span class="hljs-number">0x00070E15</span>, <span class="hljs-number">0x1C232A31</span>, <span class="hljs-number">0x383F464D</span>, <span class="hljs-number">0x545B6269</span>, <span class="hljs-number">0x70777E85</span>, <span class="hljs-number">0x8C939AA1</span>, <span class="hljs-number">0xA8AFB6BD</span>, <span class="hljs-number">0xC4CBD2D9</span>, <span class="hljs-number">0xE0E7EEF5</span>, <span class="hljs-number">0xFC030A11</span>, <span class="hljs-number">0x181F262D</span>, <span class="hljs-number">0x343B4249</span>, <span class="hljs-number">0x50575E65</span>, <span class="hljs-number">0x6C737A81</span>, <span class="hljs-number">0x888F969D</span>, <span class="hljs-number">0xA4ABB2B9</span>, <span class="hljs-number">0xC0C7CED5</span>, <span class="hljs-number">0xDCE3EAF1</span>, <span class="hljs-number">0xF8FF060D</span>, <span class="hljs-number">0x141B2229</span>, <span class="hljs-number">0x30373E45</span>, <span class="hljs-number">0x4C535A61</span>, <span class="hljs-number">0x686F767D</span>, <span class="hljs-number">0x848B9299</span>, <span class="hljs-number">0xA0A7AEB5</span>, <span class="hljs-number">0xBCC3CAD1</span>, <span class="hljs-number">0xD8DFE6ED</span>, <span class="hljs-number">0xF4FB0209</span>, <span class="hljs-number">0x10171E25</span>, <span class="hljs-number">0x2C333A41</span>, <span class="hljs-number">0x484F565D</span>, <span class="hljs-number">0x646B7279</span>]<br><br>ck=[]<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>):<br>    v11=tb[i]^block[(i+<span class="hljs-number">1</span>)%<span class="hljs-number">4</span>]^block[(i+<span class="hljs-number">2</span>)%<span class="hljs-number">4</span>]^block[(i+<span class="hljs-number">3</span>)%<span class="hljs-number">4</span>]<br>    t=v11^ror(v11,<span class="hljs-number">9</span>)^rol(v11,<span class="hljs-number">13</span>)<br>    block[i%<span class="hljs-number">4</span>]=block[i%<span class="hljs-number">4</span>]^t<br>    ck.append(block[i%<span class="hljs-number">4</span>])<br><br><span class="hljs-string">""" encry</span><br><span class="hljs-string">mstr=[0]*32</span><br><span class="hljs-string">for i in range(32):</span><br><span class="hljs-string">    v3=ck[i]^mstr[(i+1)%4]^mstr[(i+2)%4]^mstr[(i+3)%4]</span><br><span class="hljs-string">    t=v3^rol(v3,2)^ror(v3,8)^rol(v3,10)^ror(v3,14)</span><br><span class="hljs-string">    mstr[i%4]=mstr[i%4]^t</span><br><span class="hljs-string">"""</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decry</span>(<span class="hljs-params">enc</span>):</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">31</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):<br>        v3 = ck[i] ^ enc[(i + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span>] ^ enc[(i + <span class="hljs-number">2</span>) % <span class="hljs-number">4</span>] ^ enc[(i + <span class="hljs-number">3</span>) % <span class="hljs-number">4</span>]<br>        t = v3 ^ rol(v3, <span class="hljs-number">2</span>) ^ ror(v3, <span class="hljs-number">8</span>) ^ rol(v3, <span class="hljs-number">10</span>) ^ ror(v3, <span class="hljs-number">14</span>)<br>        enc[i % <span class="hljs-number">4</span>] = enc[i % <span class="hljs-number">4</span>] ^ t<br><br><br>enc=[<span class="hljs-number">0xC0CB547D</span>, <span class="hljs-number">0xD7F5DB74</span>, <span class="hljs-number">0x1B92D96F</span>, <span class="hljs-number">0x204628EB</span>, <span class="hljs-number">0x60D3D5E5</span>, <span class="hljs-number">0x2F366D80</span>, <span class="hljs-number">0x612F63B0</span>, <span class="hljs-number">0x30A90F20</span>]<br>c1=enc[:<span class="hljs-number">4</span>][::-<span class="hljs-number">1</span>]<br>decry(c1)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>.to_bytes(c1[i], <span class="hljs-number">4</span>, <span class="hljs-string">'little'</span>).decode(),end=<span class="hljs-string">''</span>)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):<br>    ck[<span class="hljs-number">5</span>+i]=enc[i]<br><br>c2=enc[<span class="hljs-number">4</span>:][::-<span class="hljs-number">1</span>]<br>decry(c2)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>.to_bytes(c2[i], <span class="hljs-number">4</span>, <span class="hljs-string">'little'</span>).decode(),end=<span class="hljs-string">''</span>)<br><span class="hljs-comment">#flag{3b2365b04700b5eac3a5fd0ba21b687f}</span><br></code></pre></td></tr></tbody></table></figure>
 <p>显示的无法打开url，实际输入解密的字符却有回显。</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527210629834.png" alt="image-20220527210629834"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220527210629834.png" srcset="/img/loading.gif" lazyload alt="image-20220527210629834"></p>
 <h3 id="溯源-2">溯源</h3>
 <blockquote>
 <p><code>CEF</code>是<code>Chromium Embedded Framework</code>的缩写，即“Chromium嵌入式框架”，采用c++编写，地位类似于Electron，是web开发应用程序的重要框架。</p>
 </blockquote>
 <p>目录特征</p>
-<figure class="highlight tex"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cef.pak</span><br><span class="line">cef<span class="built_in">_</span>100<span class="built_in">_</span>percent.pak</span><br><span class="line">cef<span class="built_in">_</span>200<span class="built_in">_</span>percent.pak</span><br><span class="line">libcef.dll</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight tex"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tex">cef.pak<br>cef<span class="hljs-built_in">_</span>100<span class="hljs-built_in">_</span>percent.pak<br>cef<span class="hljs-built_in">_</span>200<span class="hljs-built_in">_</span>percent.pak<br>libcef.dll<br></code></pre></td></tr></tbody></table></figure>
 <p>cef使用多进程，主进程为"浏览器进程"，并且他实现的功能就是将Chromium 的浏览器嵌入到应用程序中。</p>
 <p>cef应用程序demo默认加载<code>google.com</code>,当然这个url可以切换为本地文件。</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加载本地文件“c:\example\example.html” </span></span><br><span class="line">... </span><br><span class="line"><span class="keyword">if</span> (url.empty()) </span><br><span class="line">  url = <span class="string">"file://c:/example/example.html"</span>; </span><br><span class="line">…</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 加载本地文件“c:\example\example.html” </span><br>... <br><span class="hljs-keyword">if</span> (url.empty()) <br>  url = <span class="hljs-string">"file://c:/example/example.html"</span>; <br>…<br></code></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>本题url设置的please input your flag 当然是错误的无法加载页面。</p>
 </blockquote>
 <p>入口点函数</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"include/cef_command_line.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"include/cef_sandbox_win.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"tests/cefsimple/simple_app.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// When generating projects with CMake the CEF_USE_SANDBOX value will be defined</span></span><br><span class="line"><span class="comment">// automatically if using the required compiler version. Pass -DUSE_SANDBOX=OFF</span></span><br><span class="line"><span class="comment">// to the CMake command-line to disable use of the sandbox.</span></span><br><span class="line"><span class="comment">// Uncomment this line to manually enable sandbox support.</span></span><br><span class="line"><span class="comment">// #define CEF_USE_SANDBOX 1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(CEF_USE_SANDBOX)</span></span><br><span class="line"><span class="comment">// The cef_sandbox.lib static library may not link successfully with all VS</span></span><br><span class="line"><span class="comment">// versions.</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"cef_sandbox.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Entry point function for all processes.</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> APIENTRY <span class="title">wWinMain</span><span class="params">(HINSTANCE hInstance,</span></span></span><br><span class="line"><span class="params"><span class="function">                      HINSTANCE hPrevInstance,</span></span></span><br><span class="line"><span class="params"><span class="function">                      LPTSTR lpCmdLine,</span></span></span><br><span class="line"><span class="params"><span class="function">                      <span class="keyword">int</span> nCmdShow)</span> </span>{</span><br><span class="line">  UNREFERENCED_PARAMETER(hPrevInstance);</span><br><span class="line">  UNREFERENCED_PARAMETER(lpCmdLine);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Enable High-DPI support on Windows 7 or newer.</span></span><br><span class="line">  CefEnableHighDPISupport();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span>* sandbox_info = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(CEF_USE_SANDBOX)</span></span><br><span class="line">  <span class="comment">// Manage the life span of the sandbox information object. This is necessary</span></span><br><span class="line">  <span class="comment">// for sandbox support on Windows. See cef_sandbox_win.h for complete details.</span></span><br><span class="line">  CefScopedSandboxInfo scoped_sandbox;</span><br><span class="line">  sandbox_info = scoped_sandbox.sandbox_info();</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Provide CEF with command-line arguments.</span></span><br><span class="line">  <span class="function">CefMainArgs <span class="title">main_args</span><span class="params">(hInstance)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> CEF应用程序有多个子进程（渲染、GPU等），共享同一个可执行文件。这个函数检查命令行，如果这是个 一个子进程，则执行适当的逻辑。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">  <span class="keyword">int</span> exit_code = CefExecuteProcess(main_args, <span class="literal">nullptr</span>, sandbox_info);</span><br><span class="line">  <span class="keyword">if</span> (exit_code &gt;= <span class="number">0</span>) {</span><br><span class="line">    <span class="comment">// The sub-process has completed so return here.</span></span><br><span class="line">    <span class="keyword">return</span> exit_code;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Parse command-line arguments for use in this method.</span></span><br><span class="line">  CefRefPtr&lt;CefCommandLine&gt; command_line = CefCommandLine::CreateCommandLine();</span><br><span class="line">  command_line-&gt;InitFromString(::GetCommandLineW());</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Specify CEF global settings here.</span></span><br><span class="line">  CefSettings settings;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (command_line-&gt;HasSwitch(<span class="string">"enable-chrome-runtime"</span>)) {</span><br><span class="line">    <span class="comment">// Enable experimental Chrome runtime. See issue #2969 for details.</span></span><br><span class="line">    settings.chrome_runtime = <span class="literal">true</span>;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> !defined(CEF_USE_SANDBOX)</span></span><br><span class="line">  settings.no_sandbox = <span class="literal">true</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// SimpleApp implements application-level callbacks for the browser process.</span></span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  它将在CEF初始化后的OnContextInitialized()中创建第一个浏览器实例。</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="function">CefRefPtr&lt;SimpleApp&gt; <span class="title">app</span><span class="params">(<span class="keyword">new</span> SimpleApp)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化CEF</span></span><br><span class="line">  CefInitialize(main_args, settings, app.get(), sandbox_info);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Run the CEF message loop. This will block until CefQuitMessageLoop() is</span></span><br><span class="line">  <span class="comment">// called.</span></span><br><span class="line">  CefRunMessageLoop();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Shut down CEF.</span></span><br><span class="line">  CefShutdown();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;windows.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"include/cef_command_line.h"</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"include/cef_sandbox_win.h"</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"tests/cefsimple/simple_app.h"</span></span><br><br><span class="hljs-comment">// When generating projects with CMake the CEF_USE_SANDBOX value will be defined</span><br><span class="hljs-comment">// automatically if using the required compiler version. Pass -DUSE_SANDBOX=OFF</span><br><span class="hljs-comment">// to the CMake command-line to disable use of the sandbox.</span><br><span class="hljs-comment">// Uncomment this line to manually enable sandbox support.</span><br><span class="hljs-comment">// #define CEF_USE_SANDBOX 1</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> defined(CEF_USE_SANDBOX)</span><br><span class="hljs-comment">// The cef_sandbox.lib static library may not link successfully with all VS</span><br><span class="hljs-comment">// versions.</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> comment(lib, <span class="hljs-meta-string">"cef_sandbox.lib"</span>)</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br><span class="hljs-comment">// Entry point function for all processes.</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> APIENTRY <span class="hljs-title">wWinMain</span><span class="hljs-params">(HINSTANCE hInstance,</span></span><br><span class="hljs-params"><span class="hljs-function">                      HINSTANCE hPrevInstance,</span></span><br><span class="hljs-params"><span class="hljs-function">                      LPTSTR lpCmdLine,</span></span><br><span class="hljs-params"><span class="hljs-function">                      <span class="hljs-keyword">int</span> nCmdShow)</span> </span>{<br>  UNREFERENCED_PARAMETER(hPrevInstance);<br>  UNREFERENCED_PARAMETER(lpCmdLine);<br><br>  <span class="hljs-comment">// Enable High-DPI support on Windows 7 or newer.</span><br>  CefEnableHighDPISupport();<br><br>  <span class="hljs-keyword">void</span>* sandbox_info = <span class="hljs-literal">nullptr</span>;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> defined(CEF_USE_SANDBOX)</span><br>  <span class="hljs-comment">// Manage the life span of the sandbox information object. This is necessary</span><br>  <span class="hljs-comment">// for sandbox support on Windows. See cef_sandbox_win.h for complete details.</span><br>  CefScopedSandboxInfo scoped_sandbox;<br>  sandbox_info = scoped_sandbox.sandbox_info();<br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br>  <span class="hljs-comment">// Provide CEF with command-line arguments.</span><br>  <span class="hljs-function">CefMainArgs <span class="hljs-title">main_args</span><span class="hljs-params">(hInstance)</span></span>;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> CEF应用程序有多个子进程（渲染、GPU等），共享同一个可执行文件。这个函数检查命令行，如果这是个 一个子进程，则执行适当的逻辑。</span><br><span class="hljs-comment">*/</span><br>  <span class="hljs-keyword">int</span> exit_code = CefExecuteProcess(main_args, <span class="hljs-literal">nullptr</span>, sandbox_info);<br>  <span class="hljs-keyword">if</span> (exit_code &gt;= <span class="hljs-number">0</span>) {<br>    <span class="hljs-comment">// The sub-process has completed so return here.</span><br>    <span class="hljs-keyword">return</span> exit_code;<br>  }<br><br>  <span class="hljs-comment">// Parse command-line arguments for use in this method.</span><br>  CefRefPtr&lt;CefCommandLine&gt; command_line = CefCommandLine::CreateCommandLine();<br>  command_line-&gt;InitFromString(::GetCommandLineW());<br><br>  <span class="hljs-comment">// Specify CEF global settings here.</span><br>  CefSettings settings;<br><br>  <span class="hljs-keyword">if</span> (command_line-&gt;HasSwitch(<span class="hljs-string">"enable-chrome-runtime"</span>)) {<br>    <span class="hljs-comment">// Enable experimental Chrome runtime. See issue #2969 for details.</span><br>    settings.chrome_runtime = <span class="hljs-literal">true</span>;<br>  }<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> !defined(CEF_USE_SANDBOX)</span><br>  settings.no_sandbox = <span class="hljs-literal">true</span>;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br>  <span class="hljs-comment">// SimpleApp implements application-level callbacks for the browser process.</span><br>  <span class="hljs-comment">/*</span><br><span class="hljs-comment">  它将在CEF初始化后的OnContextInitialized()中创建第一个浏览器实例。</span><br><span class="hljs-comment">  */</span><br>  <span class="hljs-function">CefRefPtr&lt;SimpleApp&gt; <span class="hljs-title">app</span><span class="hljs-params">(<span class="hljs-keyword">new</span> SimpleApp)</span></span>;<br><br>  <span class="hljs-comment">// 初始化CEF</span><br>  CefInitialize(main_args, settings, app.get(), sandbox_info);<br><br>  <span class="hljs-comment">// Run the CEF message loop. This will block until CefQuitMessageLoop() is</span><br>  <span class="hljs-comment">// called.</span><br>  CefRunMessageLoop();<br><br>  <span class="hljs-comment">// Shut down CEF.</span><br>  CefShutdown();<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
 <p>至于一些回调函数和更详细的实例可以结合<a target="_blank" rel="noopener" href="https://bitbucket.org/chromiumembedded/cef/wiki/Tutorial.md">CEF-WIKI</a>提供的demo源码进行调试和学习。</p>
 <blockquote>
 <p>大致了解流程，这个框架还是比较有趣的，之后可以深入学习一下:)。</p>
@@ -278,14 +376,14 @@
 </blockquote>
 <p><strong>尝试</strong></p>
 <p>找到创建浏览器的API，进行hook拿到浏览器对象。</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cef_browser_host_create_browser</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">const</span> <span class="keyword">cef_window_info_t</span>* windowInfo,</span></span></span><br><span class="line"><span class="params"><span class="function">    struct <span class="keyword">_cef_client_t</span>* client,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">const</span> <span class="keyword">cef_string_t</span>* url,</span></span></span><br><span class="line"><span class="params"><span class="function">    struct <span class="keyword">_cef_browser_settings_t</span>* settings,</span></span></span><br><span class="line"><span class="params"><span class="function">    struct <span class="keyword">_cef_request_context_t</span>* request_context)</span></span>;</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">cef_browser_host_create_browser</span><span class="hljs-params">(</span></span><br><span class="hljs-params"><span class="hljs-function">    <span class="hljs-keyword">const</span> <span class="hljs-keyword">cef_window_info_t</span>* windowInfo,</span></span><br><span class="hljs-params"><span class="hljs-function">    struct <span class="hljs-keyword">_cef_client_t</span>* client,</span></span><br><span class="hljs-params"><span class="hljs-function">    <span class="hljs-keyword">const</span> <span class="hljs-keyword">cef_string_t</span>* url,</span></span><br><span class="hljs-params"><span class="hljs-function">    struct <span class="hljs-keyword">_cef_browser_settings_t</span>* settings,</span></span><br><span class="hljs-params"><span class="hljs-function">    struct <span class="hljs-keyword">_cef_request_context_t</span>* request_context)</span></span>;<br></code></pre></td></tr></tbody></table></figure>
 <p>而这个函数是异步,所以<code>cef_browser_t*</code>存在于创建成功的回调中，作者之后又通过<code>_cef_client_t* client</code>参数入手去hook回调，但最终以失败告终。</p>
 <p>同步和异步复习<a target="_blank" rel="noopener" href="https://www.cnblogs.com/IT-CPC/p/10898871.html">同步(Synchronous)和异步(Asynchronous) - myCpC - 博客园 (cnblogs.com)</a></p>
 <p><strong>柳暗花明</strong></p>
 <p>师傅又通过观察libcef的其他API，找到了突破口。</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">// Returns the current (top) context object in the V8 context stack.</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="function">CEF_EXPORT <span class="keyword">cef_v8context_t</span>* <span class="title">cef_v8context_get_current_context</span><span class="params">()</span></span>; <span class="comment">//返回V8引擎的上下文</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">///</span><br><span class="hljs-comment">// Returns the current (top) context object in the V8 context stack.</span><br><span class="hljs-comment">///</span><br><span class="hljs-function">CEF_EXPORT <span class="hljs-keyword">cef_v8context_t</span>* <span class="hljs-title">cef_v8context_get_current_context</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">//返回V8引擎的上下文</span><br></code></pre></td></tr></tbody></table></figure>
 <p>介于V8js与browser是绑定的，所以借助v8js引擎的上下文来拿到browser对象。</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cef_browser_t</span>* browser = <span class="literal">NULL</span>;</span><br><span class="line"><span class="function"><span class="keyword">cef_v8context_t</span>* <span class="title">my_cef_v8context_get_current_context</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">cef_v8context_t</span>* js_context = ori_cef_v8context_get_current_context(); <span class="comment">//获取V8js引擎上下文</span></span><br><span class="line">    Print(<span class="string">"my_cef_v8context_get_current_context js_context: %X!!\n"</span>, js_context);</span><br><span class="line">    browser = js_context-&gt;get_browser(js_context); <span class="comment">//得到浏览器对象!!!</span></span><br><span class="line">    <span class="comment">//Print("[!!!] browser = %X\n", browser);</span></span><br><span class="line">    <span class="keyword">_cef_frame_t</span>* frame = browser-&gt;get_main_frame(browser);</span><br><span class="line">    <span class="comment">//Print("[!!!] frame = %X\n", frame);</span></span><br><span class="line">    CefString script = payload;</span><br><span class="line">    CefString url = xorstr(<span class="string">"app/wd"</span>).crypt_get();</span><br><span class="line">    frame-&gt;execute_java_script(frame, script.GetStruct(), url.GetStruct(), <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> js_context;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// write by renbohan  https://bbs.pediy.com/thread-268570.htm</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">cef_browser_t</span>* browser = <span class="hljs-literal">NULL</span>;<br><span class="hljs-function"><span class="hljs-keyword">cef_v8context_t</span>* <span class="hljs-title">my_cef_v8context_get_current_context</span><span class="hljs-params">()</span> </span>{<br>    <span class="hljs-keyword">cef_v8context_t</span>* js_context = ori_cef_v8context_get_current_context(); <span class="hljs-comment">//获取V8js引擎上下文</span><br>    Print(<span class="hljs-string">"my_cef_v8context_get_current_context js_context: %X!!\n"</span>, js_context);<br>    browser = js_context-&gt;get_browser(js_context); <span class="hljs-comment">//得到浏览器对象!!!</span><br>    <span class="hljs-comment">//Print("[!!!] browser = %X\n", browser);</span><br>    <span class="hljs-keyword">_cef_frame_t</span>* frame = browser-&gt;get_main_frame(browser);<br>    <span class="hljs-comment">//Print("[!!!] frame = %X\n", frame);</span><br>    CefString script = payload;<br>    CefString url = xorstr(<span class="hljs-string">"app/wd"</span>).crypt_get();<br>    frame-&gt;execute_java_script(frame, script.GetStruct(), url.GetStruct(), <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">return</span> js_context;<br>}<br><span class="hljs-comment">// write by renbohan  https://bbs.pediy.com/thread-268570.htm</span><br></code></pre></td></tr></tbody></table></figure>
 <p>至此目的已经达成，即我们成功拿到了cef创建出的浏览器对象。所谓过河拆桥，拿到该对象后就可以非常方便的执行js代码，从而cef的打工生涯结束，js才是check代码的主场。</p>
 <h2 id="LuaJit">LuaJit</h2>
 <blockquote>
@@ -297,7 +395,7 @@
 <p>直接百度luajit逆向，之前没接触过此类逆向，格局小了🙃。有幸之前在<a target="_blank" rel="noopener" href="https://blog.shi1011.cn/rev/android/1216">🐟哥 - Mas0n</a>博客上看到过几种lua的保护方式和解决方案。</p>
 </blockquote>
 <p>可以通过非虫大牛的<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/90241#h3-11">Lua程序逆向之Luajit字节码与反汇编</a>了解luajit的opcode结构和文件格式，并且提供了010的<code>luajit.bt</code>的模板。</p>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220528115928721.png" alt="image-20220528115928721"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220528115928721.png" srcset="/img/loading.gif" lazyload alt="image-20220528115928721"></p>
 <p>并且也直接进行了反汇编，当然阅读luajit反汇编之后的字节码也是一种折磨，于是在<code>gayhub</code>上四处搜寻反编译的轮子，不过结果都不尽人意。</p>
 <blockquote>
 <p>总结: 前辈们的工具大多一脉相承，根据版本更新添加新的opcode；同时只能反编译luajit编译出32位的文件，对64位不适用。</p>
@@ -315,8 +413,8 @@
 </blockquote>
 <p>去官网下载2.1.0-beta3的源码，使用VS工具包中的命令行编译工具<code>vcvars64.bat</code>来完成编译，在Luajit根目录下打开cmd输入<code>vcvars64.bat</code></p>
 <p>文件路径。</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"F:\visual studio2019\VC\Auxiliary\Build\vcvars64.bat"</span></span><br></pre></td></tr></tbody></table></figure>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220528200018823.png" alt="image-20220528200018823"></p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-string">"F:\visual studio2019\VC\Auxiliary\Build\vcvars64.bat"</span><br></code></pre></td></tr></tbody></table></figure>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220528200018823.png" srcset="/img/loading.gif" lazyload alt="image-20220528200018823"></p>
 <blockquote>
 <p>在MSVC 32位编译环境下  msvcbuild.bat  编译32位</p>
 <p>msvcbuild.bat gc64编译64位，编译64位后面一定要跟gc64, 即便是开启的x64的编译命令行。</p>
@@ -326,71 +424,220 @@
 <blockquote>
 <p>经典luajit.exe -h 罗列指令菜单</p>
 </blockquote>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220528201038811.png" alt="image-20220528201038811"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220528201038811.png" srcset="/img/loading.gif" lazyload alt="image-20220528201038811"></p>
 <p>反编译不得就撸字节码，不过官网给出的主要是2.0版本的bytecode ， 详细可见<code>src/lj_bc.h</code> 。</p>
 <p>可以自己写一些lua代码，之后luajit -b test.lua xxx 进行编译之后查看字节码对照。</p>
 <blockquote>
 <p>或者用luajit-decomp反编译一下，可读性是有点差的。先暂时告一段落，之后填坑吧，即使我的知识星球已经被挖的坑坑洼洼咯!</p>
 </blockquote>
-<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220528213003579.png" alt="image-20220528213003579"></p>
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220528213003579.png" srcset="/img/loading.gif" lazyload alt="image-20220528213003579"></p>
 <p>相关连接:</p>
 <p>LuaJit官网 : <a target="_blank" rel="noopener" href="http://luajit.org/">http://luajit.org/</a>  一些参考文档和编译方法</p>
 <p><a target="_blank" rel="noopener" href="http://wiki.luajit.org/Bytecode-2.0">LuaJIT 2.0 Bytecode Instructions</a></p>
 <h3 id="总结">总结</h3>
 <p>知识面和广度还是差了亿点，之前太多题目都只是局限在解密表面，没去溯源。同时单纯解密的话思路要打开，能在最短时间内定位关键处理函数的能力十分重要，同时赛后的复现和深入学习题目涉及的考点也是必不可少的部分。😃😃😃</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lu1u</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/05/28/2022DAS5%E6%9C%88/">http://example.com/2022/05/28/2022DAS5%E6%9C%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Lu1u</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/WER/">WER</a><a class="post-meta__tags" href="/tags/CEF/">CEF</a><a class="post-meta__tags" href="/tags/LuaJIT/">LuaJIT</a></div><div class="post_share"><div class="social-share" data-image="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/xx.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/04/20/NaCl-%E7%A8%8B%E5%BA%8F%E4%BF%AE%E5%A4%8D/"><img class="next-cover" src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/wallhaven-l3ovrr.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">模拟栈帧修复</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lu1u.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lu1u</div><div class="author-info__description">Never back</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/smallboyZ"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/smallboyZ" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:3194679102@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">沿途风景正好!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">DAS 5月</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#wer"><span class="toc-number">1.1.</span> <span class="toc-text">wer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3"><span class="toc-number">1.1.1.</span> <span class="toc-text">求解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%AF%E6%BA%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">溯源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CEF"><span class="toc-number">1.2.</span> <span class="toc-text">CEF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3-2"><span class="toc-number">1.2.1.</span> <span class="toc-text">求解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%AF%E6%BA%90-2"><span class="toc-number">1.2.2.</span> <span class="toc-text">溯源</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E6%8F%92%E6%9B%B2"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">小插曲</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LuaJit"><span class="toc-number">1.3.</span> <span class="toc-text">LuaJit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.1.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/28/2022DAS5%E6%9C%88/" title="DAS_5月_出题人挑战赛"><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/xx.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DAS_5月_出题人挑战赛"/></a><div class="content"><a class="title" href="/2022/05/28/2022DAS5%E6%9C%88/" title="DAS_5月_出题人挑战赛">DAS_5月_出题人挑战赛</a><time datetime="2022-05-28T13:33:39.954Z" title="发表于 2022-05-28 21:33:39">2022-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/20/NaCl-%E7%A8%8B%E5%BA%8F%E4%BF%AE%E5%A4%8D/" title="模拟栈帧修复"><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/wallhaven-l3ovrr.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="模拟栈帧修复"/></a><div class="content"><a class="title" href="/2022/04/20/NaCl-%E7%A8%8B%E5%BA%8F%E4%BF%AE%E5%A4%8D/" title="模拟栈帧修复">模拟栈帧修复</a><time datetime="2022-04-20T14:50:12.371Z" title="发表于 2022-04-20 22:50:12">2022-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/19/StarCTF-2022/" title="\*CTF-2022-someRE"><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/123.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="\*CTF-2022-someRE"/></a><div class="content"><a class="title" href="/2022/04/19/StarCTF-2022/" title="\*CTF-2022-someRE">\*CTF-2022-someRE</a><time datetime="2022-04-19T10:00:58.141Z" title="发表于 2022-04-19 18:00:58">2022-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/04/Android%20native%20%E9%80%86%E5%90%91/" title="Android Native Reverse(...ing)"><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/v2-cf75a3eafbb9d9862694fac62329de6c_720w.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android Native Reverse(...ing)"/></a><div class="content"><a class="title" href="/2022/04/04/Android%20native%20%E9%80%86%E5%90%91/" title="Android Native Reverse(...ing)">Android Native Reverse(...ing)</a><time datetime="2022-04-03T17:00:04.000Z" title="发表于 2022-04-04 01:00:04">2022-04-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/03/Android%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Android逆向环境搭建(持续更新中...)"><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/andy-lg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android逆向环境搭建(持续更新中...)"/></a><div class="content"><a class="title" href="/2022/04/03/Android%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Android逆向环境搭建(持续更新中...)">Android逆向环境搭建(持续更新中...)</a><time datetime="2022-04-03T12:10:00.000Z" title="发表于 2022-04-03 20:10:00">2022-04-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/xx.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Lu1u</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">喂,不可以色色哦!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
-  if (typeof pangu === 'object') pangu.autoSpacingPage()
-  else {
-    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
-      .then(() => {
-        pangu.autoSpacingPage()
-      })
-  }
-}
 
-function panguInit () {
-  if (false){
-    GLOBAL_CONFIG_SITE.isPost && panguFn()
-  } else {
-    panguFn()
-  }
-}
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF-WP/">CTF-WP</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/WER/">WER</a>
+                    
+                      <a class="hover-with-bg" href="/tags/CEF/">CEF</a>
+                    
+                      <a class="hover-with-bg" href="/tags/LuaJIT/">LuaJIT</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/20/NaCl-%E7%A8%8B%E5%BA%8F%E4%BF%AE%E5%A4%8D/">
+                        <span class="hidden-mobile">模拟栈帧修复</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
-  function initValine () {
-    const valine = new Valine(Object.assign({
-      el: '#vcomment',
-      appId: 'dG9k0bNzTLa8ce8dJVPW6a1S-gzGzoHsz',
-      appKey: 'uNYvcLRBa89c21aI9qAO6BBi',
-      placeholder: '悄悄话~',
-      avatar: 'monsterid',
-      meta: 'nick,mail,link'.split(','),
-      pageSize: '10',
-      lang: 'zh-CN',
-      recordIP: false,
-      serverURLs: 'https://dg9k0bnz.lc-cn-n1-shared.com',
-      emojiCDN: '',
-      emojiMaps: "",
-      enableQQ: true,
-      path: window.location.pathname,
-      requiredFields: ["nick,mail"],
-      visitor: false
-    }, null))
-  }
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
-  if (typeof Valine === 'function') initValine() 
-  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
-}
+      </div>
+    
+  </div>
+</div>
 
-if ('Valine' === 'Valine' || !true) {
-  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
-  else setTimeout(loadValine, 0)
-} else {
-  function loadOtherComment () {
-    loadValine()
-  }
-}</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = false;
-POWERMODE.mobile = false;
-document.body.addEventListener('input', POWERMODE);
-</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="Biu" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
