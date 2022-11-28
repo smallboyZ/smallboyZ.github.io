@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/hitcon.png">
 <meta property="article:published_time" content="2022-11-28T12:07:25.692Z">
-<meta property="article:modified_time" content="2022-11-28T12:07:19.614Z">
+<meta property="article:modified_time" content="2022-11-28T14:20:33.301Z">
 <meta property="article:author" content="Lu1u&#39;s Blog">
 <meta property="article:tag" content="RE">
 <meta property="article:tag" content="Wp">
@@ -344,7 +344,7 @@
 <p>不过感觉这总秘钥找法不太对，大文件就解不出，确实他会记录最后一组的依次放入也就是那个秘钥对于大文件是对应的最后一组。扩展出的轮秘钥是固定的，在内存可以找到768字节，并且下面和rand2拼起来了，所以这才是真正的秘钥，加密就异或，所以试试patch秘钥进去。</p>
 <p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20221128195949539.png" srcset="/img/loading.gif" lazyload alt="image-20221128195949539"></p>
 <p>.-.,确实patch解了</p>
-<img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20221128200007596.png" srcset="/img/loading.gif" lazyload alt="image-20221128200007596" style="zoom:50%;">
+<p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20221128200007596.png" srcset="/img/loading.gif" lazyload alt="getflag"></p>
 <p>patch一下就好了，被出题人误导了算是，T.T恶意软件系列真就钟爱流密码。</p>
 <p><strong>在core里面找patch数据直接搜加密文件的前8字节，前面有768字节并且会有路径的字符串。</strong></p>
 <p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20221128200025573.png" srcset="/img/loading.gif" lazyload alt="image-20221128200025573"></p>
