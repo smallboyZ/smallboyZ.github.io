@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/VNCTF2023.png">
 <meta property="article:published_time" content="2023-02-21T12:15:31.988Z">
-<meta property="article:modified_time" content="2023-02-23T08:43:35.411Z">
+<meta property="article:modified_time" content="2023-03-01T09:40:26.870Z">
 <meta property="article:author" content="Lu1u&#39;s Blog">
 <meta property="article:tag" content="Wp">
 <meta name="twitter:card" content="summary_large_image">
@@ -346,7 +346,7 @@
 <p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20230221213912827.png" srcset="/img/loading.gif" lazyload alt="image-20230221213912827"></p>
 <p>对比解密出的数据，搜索特征可为SM4的FK和Sbox</p>
 <p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20230221213939470.png" srcset="/img/loading.gif" lazyload alt="image-20230221213939470"></p>
-<p>解密的数据终归是要用的，这里直接交叉引用，辅助定位到主要逻辑，发现最终的调用指向DLLMAIN+0x5B1处，而IDA只编译了少部分，仔细观摩发现存在SEH和花指令，在第一个call hint之后对eax的运算值为9，与0x51相比决定跳转，这个jz不可能执行，但后面却隐藏着很多逻辑，先patch为jmp使ida反编译。</p>
+<p>解密的数据终归是要用的，这里直接交叉引用，辅助定位到主要逻辑，发现最终的调用指向DLLMAIN+0x5B1处，而IDA只编译了少部分，仔细观摩发现存在SEH和花指令，在第一个call hint之后对eax的运算值为9，与0x51(81)相比决定跳转，第一次jz不会执行，因为call $+5 压入了mul eax处的地址，所以ret后会再进行mul eax，此时9x9=81即jz条件满足，先patch为jmp使ida反编译。</p>
 <p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20230221213952590.png" srcset="/img/loading.gif" lazyload alt="image-20230221213952590"></p>
 <p>修复main后部分的花指令。</p>
 <p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20230222103529035.png" srcset="/img/loading.gif" lazyload alt="image-20230222103529035"></p>
