@@ -268,7 +268,7 @@
   
   
   <entry>
-    <title>Android Native Reverse(...ing)</title>
+    <title>Android Native Reverse</title>
     <link href="/2022/04/04/Android%20native%20%E9%80%86%E5%90%91/"/>
     <url>/2022/04/04/Android%20native%20%E9%80%86%E5%90%91/</url>
     
@@ -287,33 +287,6 @@
       <tag>RE</tag>
       
       <tag>Android</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Android逆向环境搭建(持续更新中...)</title>
-    <link href="/2022/04/03/Android%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    <url>/2022/04/03/Android%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    
-    <content type="html"><![CDATA[<h1>Android逆向环境搭建</h1><blockquote><p>记录在Android 学习中工具的配置及相关环境的搭建。</p></blockquote><h2 id="Frida的安装">Frida的安装</h2><blockquote><p>过程非常的曲折，好在最终是装上了的，或许你坚持走的路，他始终就是个优雅的错误，梦醒了，还要继续走🚩。</p></blockquote><h3 id="Frida-下载">Frida 下载</h3><p>网上很多教程都是直接<code>pip install frida</code> 和<code>pip install frida-tools</code>即可，可是我在安装时却不是如此。<strong>(记得关掉梯子，否则会出错)</strong></p><blockquote><p>其实后来在装好后 学习用法的时看到很多前辈在安装时候都有强调版本问题，只能怪自己当时有点急躁，漏掉了许多细节😞。</p></blockquote><p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220401233143141.png" alt="image-20220401233143141"></p><p>这是我安装成功后用python3.10运行时的报错(部分)，其余版本也是如此，对此我测试了python3.7-3.10间的版本。</p><p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220401233315327.png" alt="image-20220401233315327"></p><p>在使用python3.8和python2.7安装时，发现其缓存中的库都是同一个版本<code>frida-15.1.17</code>这在pypi上标注是针对3.10的,然后错误是在setup.py所以是版本处理不当,不过python3.10也运行出错就有点意外。</p><p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220401234359678.png" alt="image-20220401234359678"></p><p>他这一步其实是下载了 <code>frida-15.1.17.tar.gz</code> , <a href="http://xn--setup-4n1hg0rx93at61crfxbxjr.py">并运行其中的setup.py</a> ,故可以直接在网上下载一个对应python3.7版本的frida文件 ,<a href="http://xn--setup-r96h474gtsi6t8eyyp.py">手动来运行setup.py</a>。</p><p>python3.7对应win-amd64版本  <a href="https://files.pythonhosted.org/packages/0a/4b/b191420bd34215377f72e04593619d9266d5e3e33f6cf48c8e827dcecb89/frida-12.8.20.tar.gz">frida-12.8.20.tar.gz </a> ,之后在任意目录解压，并在命令行依次运行如下指令。</p><ol><li><p><strong>python3.7 <a href="http://setup.py">setup.py</a> install</strong></p><p>该步过后会在Python37\Lib\site-packages 目录下生成frida-12.8.20-py3.7-win-amd64.egg，在运行的最后一步可能需要等待一段时间。</p><p>之后不要再去pip install frida ，接着去安装 frida-tools，不过直接pip 也会有报错。</p></li><li><p><strong>pip3.7 install  frida-tools==7.2.1</strong></p></li></ol><p>​指定frida-tools的版本为7.2.1，接着等待一段时间，出现success就算成功。</p><p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220402000244440.png" alt="image-20220402000244440"></p><p>之后安装frida-server 版本要和frida一致 <code>frida --version</code> ，到<a href="https://github.com/frida/frida/releases?page=8">frida-github</a>安装对应版本的server。</p><p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220403004209807.png" alt="image-20220403004209807"></p><blockquote><p>adb shell getprop ro.product.cpu.abi   查看手机cpu版本下载对应的server架构</p></blockquote><p>下载解压后，将文件重命名为 <code>frida-server</code> ，或者加上对应的架构，<strong>夜神模拟器的话选Android-x86</strong>。</p><h3 id="adb调试环境">adb调试环境</h3><p>首先进入夜神模拟器的bin目录，打开终端。</p><ol><li>nox_adb.exe connect 127.0.0.1:62001 模拟器连到62001这个端口上</li><li>在非夜神bin目录的终端下 运行 adb connect 127.0.0.1:62001</li><li>adb devices 检测是否连接</li></ol><blockquote><p>如果其中出现不匹配的问题，就到Android_SDK目录下把adb.exe复制到夜神模拟器的bin目录，重命名为nox_adb.exe之后再进行上述步骤。</p></blockquote><p>配置好夜神后，将<code>frida-server</code>传到其<code>\data\local\tmp</code>目录下，修改权限并运行。</p><ol><li><strong>adb push ./frida-server /data/local/tmp</strong></li><li><strong>adb shell</strong></li><li><strong>cd data/local/tmp</strong></li><li><strong>chmod 777 frida-server</strong></li><li><strong>./frida-server</strong></li><li><strong>adb tcp:27042 tcp:27042 进行端口转发</strong></li></ol><p>夜神模拟器中打开一个app程序，在主机上通过<code>frida-ps -U</code>查看USB调试进程，发现自己启动的程序包即为成功😃。</p><p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220403004501603.png" alt="image-20220403004501603"></p><p>使用<code>firda</code>hook包，<strong>frida-trace -i “open” -U com.test.hufu22</strong>。</p><p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220403104658735.png" alt="image-20220403104658735"></p><blockquote><p>当然基于frida的使用还有待进一步的学习，使用夜神模拟器等也只能是正对程序中带了x86的so文件才能进行IDA调试和Frida hook，要想用于实战必须要配备root机。</p></blockquote><p>最终简介一下:frida是一款基于python + javascript 的hook框架，可运行在android、ios、linux、winosx等各平台，主要使用动态二进制插桩技术。</p><h3 id="Objection安装">Objection安装</h3><p>objection是一个基于Frida开发的命令行工具，它可以很方便的Hook Java函数和类，并输出参数，调用栈。其git地址为<a href="https://github.com/sensepost/objection/releases?page=2">objection-github-release</a>。</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs cmd">frida --version #打印frida版本  <span class="hljs-number">12</span>.<span class="hljs-number">11</span>.<span class="hljs-number">18</span><br></code></pre></td></tr></tbody></table></figure><blockquote><p>安装对版本也又要求，如果frida安装的是12.11.18 ，那么安装的版本在1.8.4 ~ 1.9.0左右，更多可以根据frida版本的发行时间去objection找靠后一点的版本。</p></blockquote><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">pip3.<span class="hljs-number">7</span> install objection==<span class="hljs-number">1</span>.<span class="hljs-number">9</span>.<span class="hljs-number">0</span> #直接指定相应版本即可<br></code></pre></td></tr></tbody></table></figure><p><img src="https://blog-1309321804.cos.ap-nanjing.myqcloud.com/blog/image-20220403195842070.png" alt="image-20220403195842070"></p><p><a href="https://chowdera.com/2021/09/20210926150657751D.html">frida install and 夜神模拟器</a></p><p><a href="https://www.cxybb.com/article/freeking101/106965168">Android逆向-firda Hook 框架</a></p><p><a href="https://www.codeleading.com/article/77291460162/">Python-HOOK神器-Frida学习</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Android</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Android</tag>
-      
-      <tag>Tools</tag>
       
     </tags>
     
